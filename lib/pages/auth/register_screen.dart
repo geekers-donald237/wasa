@@ -17,7 +17,7 @@ class RegisterScreen extends StatelessWidget {
       body: Container(
         decoration: BoxDecoration(color: AppStyle.kWhite),
         child: Padding(
-          padding: EdgeInsets.all(defaultSpacing),
+          padding: EdgeInsets.all(kDefaultSpacing),
           child: SingleChildScrollView(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -30,7 +30,7 @@ class RegisterScreen extends StatelessWidget {
                 ),
 
                 RegisterFormWidget(),
-                const SizedBox(height: tripleSpacing),
+                const SizedBox(height: kTripleSpacing),
                 FooterWidget(
                   ontap: () {
                     NavigationServices(context).gotoLoginscreen();

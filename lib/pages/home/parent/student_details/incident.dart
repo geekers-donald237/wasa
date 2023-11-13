@@ -41,17 +41,17 @@ class _IncidentDetailsScreenState extends State<IncidentDetailsScreen> {
           children: [
             mainViewDivider(),
             SizedBox(
-              height: defaultSpacing,
+              height: kDefaultSpacing,
             ),
             IconTextRow(
               icon: Icons.arrow_right_outlined,
               text: AppLocalizations.of(context)!.incident_name,
             ),
             SizedBox(
-              height: defaultSpacing,
+              height: kDefaultSpacing,
             ),
             Padding(
-              padding: const EdgeInsets.all(defaultSpacing),
+              padding: const EdgeInsets.all(kDefaultSpacing),
               child: Container(
                 width: double.infinity, // Prend toute la largeur disponible
                 child: createDataTable(

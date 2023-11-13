@@ -16,7 +16,7 @@ class HelpCenterScreen extends StatelessWidget {
       appBar: customAppbar('help Center', context, false),
       body: Center(
           child: Padding(
-        padding: EdgeInsets.all(defaultSpacing),
+        padding: EdgeInsets.all(kDefaultSpacing),
         child: SingleChildScrollView(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -38,7 +38,7 @@ class HelpCenterScreen extends StatelessWidget {
                 labelPositionIscentered: true,
               ),
               SizedBox(
-                height: doubleSpacing,
+                height: kDefaultSpacing,
               ),
               customSubmitBtn('Submit'),
             ],

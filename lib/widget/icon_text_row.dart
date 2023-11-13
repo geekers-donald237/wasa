@@ -22,14 +22,14 @@ class IconTextRow extends StatelessWidget {
           children: [
             Icon(
               icon,
-              color: AppStyle.defaultIconColor,
-              size: iconSize,
+              color: AppStyle.kBlack,
+              size: kIconSize,
             ),
             Text(
               text,
               style: TextStyle(
                 color: AppStyle.kGreyColor,
-                fontSize: fontsize_15,
+                fontSize: kFontsize15,
                 fontFamily: 'Work Sans',
                 fontWeight: FontWeight.w500,
                 height: 0,

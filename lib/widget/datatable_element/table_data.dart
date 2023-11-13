@@ -8,7 +8,7 @@ DataTable createDataTable(String firstDataColumnText,
   return DataTable(
     columns: _createColumns(firstDataColumnText, SecondDataColumnText),
     rows: _createRows(dataList),
-    dividerThickness: thicknessValue_15,
+    dividerThickness: kBorderValue1_5,
     dataRowHeight: 50,
     showBottomBorder: true,
     headingTextStyle:

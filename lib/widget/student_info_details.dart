@@ -12,7 +12,7 @@ class NumberTextWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(defaultSpacing),
+      padding: const EdgeInsets.all(kDefaultSpacing),
       child: Column(
         children: [
           Container(
@@ -73,7 +73,7 @@ class NumberTextWidget extends StatelessWidget {
                           ),
                         ),
                         SizedBox(
-                          width: doubleSpacing,
+                          width: kDefaultSpacing,
                         ),
                         Text(
                           text,

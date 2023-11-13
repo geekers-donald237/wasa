@@ -20,14 +20,14 @@ class DisciplinaryInfo extends StatelessWidget {
           children: [
             mainViewDivider(),
             SizedBox(
-              height: defaultSpacing,
+              height: kDefaultSpacing,
             ),
             IconTextRow(
               icon: Icons.arrow_right_outlined,
               text: AppLocalizations.of(context)!.cahier_disc,
             ),
             SizedBox(
-              height: defaultSpacing,
+              height: kDefaultSpacing,
             ),
             GestureDetector(
               onTap: () {

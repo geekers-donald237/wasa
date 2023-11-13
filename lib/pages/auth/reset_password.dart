@@ -4,7 +4,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../config/theme/theme.dart';
 import '../../config/utils/constant.dart';
-import '../../config/utils/helpers.dart';
+import '../../config/utils/custom_dialog.dart';
 import '../../widget/helpers/helpers.dart';
 
 class ResetPasswordScreen extends StatefulWidget {
@@ -23,7 +23,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
       body: Container(
         decoration: BoxDecoration(color: AppStyle.kWhite),
         child: Padding(
-          padding: EdgeInsets.all(defaultSpacing),
+          padding: EdgeInsets.all(kDefaultSpacing),
           child: SingleChildScrollView(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -31,7 +31,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                 HeaderWidget(
                   text: AppLocalizations.of(context)!.reset_password,
                 ),
-                const SizedBox(height: doubleSpacing),
+                const SizedBox(height: kDefaultSpacing),
                 ResetFormWidget(),
               ],
             ),

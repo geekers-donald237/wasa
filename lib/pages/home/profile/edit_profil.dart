@@ -21,7 +21,7 @@ class _EditProfilScreenState extends State<EditProfilScreen> {
       body: Container(
         child: SingleChildScrollView(
           child: Padding(
-            padding: const EdgeInsets.all(defaultSpacing),
+            padding: const EdgeInsets.all(kDefaultSpacing),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
@@ -49,7 +49,7 @@ class _EditProfilScreenState extends State<EditProfilScreen> {
                   hintText: AppLocalizations.of(context)!.adr_field,
                 ),
                 SizedBox(
-                  height: doubleSpacing,
+                  height: kDefaultSpacing,
                 ),
                 customSubmitBtn('Update'),
               ],

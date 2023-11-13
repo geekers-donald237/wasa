@@ -4,7 +4,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:wasa/config/utils/constant.dart';
 import 'package:wasa/widget/helpers/helpers.dart';
 
-import '../../../config/utils/helpers.dart';
+import '../../../config/utils/custom_dialog.dart';
 
 class ParentHomeView extends StatefulWidget {
   const ParentHomeView({super.key});
@@ -18,10 +18,15 @@ class _ParentHomeViewState extends State<ParentHomeView> {
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: () async {
-        showConfirmationExitDialog(
-            context, AppLocalizations.of(context)!.exit_app, () {
-          SystemNavigator.pop();
-        });
+        showConfirmationDialog(
+          context,
+          AppLocalizations.of(context)!.exit_app,
+          onTap: () {
+            () {
+              SystemNavigator.pop();
+            };
+          },
+        );
         return false;
       },
       child: Scaffold(
@@ -32,7 +37,7 @@ class _ParentHomeViewState extends State<ParentHomeView> {
               mainViewDivider(),
               buildStudentContainer(context),
               SizedBox(
-                height: doubleSpacing,
+                height: kDefaultSpacing,
               ),
               buildStudentContainer(context),
             ],

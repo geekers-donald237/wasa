@@ -6,8 +6,9 @@ import 'package:wasa/config/routes/routes_names.dart';
 import 'package:wasa/pages/home/parent/parent_screen.dart';
 import 'package:wasa/widget/helpers/helpers.dart';
 
+import '../../config/theme/theme.dart';
 import '../../config/utils/constant.dart';
-import '../../config/utils/helpers.dart';
+import '../../config/utils/custom_dialog.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../config/utils/localfiles.dart';
@@ -21,7 +22,7 @@ class OptScreen extends StatefulWidget {
 }
 
 class _OptScreenState extends State<OptScreen> {
-  bool invalidOtp = false;
+ bool invalidOtp = false;
   int resendTime = 60;
   late Timer countdownTimer;
   TextEditingController txt1 = TextEditingController();
@@ -54,6 +55,7 @@ class _OptScreenState extends State<OptScreen> {
 
   String strFormatting(n) => n.toString().padLeft(2, '0');
   @override
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: customAppbar('', context, false),
@@ -61,25 +63,26 @@ class _OptScreenState extends State<OptScreen> {
       body: Center(
         child: SingleChildScrollView(
           child: Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: EdgeInsets.all(kDefaultSpacing),
             child: Column(
               children: [
                 Image.asset(
                   Localfiles.logo,
-                  height: LogoHeight,
-                  width: LogoWidth,
+                  height: kHeight200,
+                  width: kWidth200,
                 ),
-                const SizedBox(height: 20),
-                const Text(
+                SizedBox(height: kDefaultSpacing),
+                Text(
                   'Verification Code',
-                  style: TextStyle(fontSize: 30),
+                  style: TextStyle(fontSize: kFontsize30),
                 ),
-                const SizedBox(height: 20),
-                const Text(
+                SizedBox(height: kDefaultSpacing),
+                Text(
                   'Enter the 4 digit verification code received',
-                  style: TextStyle(fontSize: 18, color: Color(0xFF5271FF)),
+                  style: TextStyle(
+                      fontSize: kFontsize20, color: AppStyle.kDefaultColor),
                 ),
-                const SizedBox(height: 20),
+                SizedBox(height: kDefaultSpacing),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
@@ -89,16 +92,16 @@ class _OptScreenState extends State<OptScreen> {
                     optInputBox(context, txt4),
                   ],
                 ),
-                const SizedBox(height: 40),
+                SizedBox(height: kQuadrupleSpacing),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const Text(
+                    Text(
                       "Haven't received OTP yet?",
-                      style: TextStyle(fontSize: 18),
+                      style: TextStyle(fontSize: kFontsize20),
                     ),
-                    const SizedBox(width: 10),
-                    resendTime == 0
+                    SizedBox(width: kDefaultSpacing),
+                    resendTime == kZeroValue
                         ? InkWell(
                             onTap: () {
                               // Resend OTP Code
@@ -107,27 +110,30 @@ class _OptScreenState extends State<OptScreen> {
                               startTimer();
                               //
                             },
-                            child: const Text(
+                            child: Text(
                               'Resend',
-                              style: TextStyle(color: Colors.red, fontSize: 18),
+                              style: TextStyle(
+                                  color: AppStyle.kRedColor,
+                                  fontSize: kFontsize20),
                             ),
                           )
-                        : const SizedBox()
+                        : SizedBox()
                   ],
                 ),
-                const SizedBox(height: 10),
-                resendTime != 0
+                SizedBox(height: kDefaultSpacing),
+                resendTime != kZeroValue
                     ? Text(
                         'You can resend OTP after ${strFormatting(resendTime)} second(s)',
-                        style: const TextStyle(fontSize: 18),
+                        style: TextStyle(fontSize: kFontsize20),
                       )
-                    : const SizedBox(),
-                const SizedBox(height: 5),
+                    : SizedBox(),
+                SizedBox(height: kDefaultSpacing),
                 Text(
                   invalidOtp ? 'Invalid otp!' : '',
-                  style: const TextStyle(fontSize: 20, color: Colors.red),
+                  style: TextStyle(
+                      fontSize: kFontsize20, color: AppStyle.kRedColor),
                 ),
-                const SizedBox(height: 20),
+                SizedBox(height: kDefaultSpacing),
                 customSubmitBtn(
                   'Verify',
                   onTap: () {
@@ -145,7 +151,7 @@ class _OptScreenState extends State<OptScreen> {
                         invalidOtp = true;
                       });
                     }
-                    NavigationServices(context).gotoResetScreen();
+                    NavigationServices(context).gotoLoginscreen();
                   },
                 ),
               ],

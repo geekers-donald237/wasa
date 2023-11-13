@@ -22,7 +22,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(top: inputSeparation, bottom: inputSeparation),
+      margin: EdgeInsets.only(top: kSmallerSpacing, bottom: kSmallerSpacing),
       child: TextField(
         decoration: InputDecoration(
           hintText: widget.hintText,

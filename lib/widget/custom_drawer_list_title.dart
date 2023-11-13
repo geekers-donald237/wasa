@@ -22,7 +22,7 @@ class CustomDrawerListile extends StatelessWidget {
           onTap: onTap,
         ),
         Divider(
-          thickness: dividerThickness,
+          thickness: kBorderValue1_5,
         ),
       ],
     );

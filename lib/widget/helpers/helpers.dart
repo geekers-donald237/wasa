@@ -4,23 +4,10 @@ import 'package:wasa/config/routes/routes_names.dart';
 
 import '../../config/theme/theme.dart';
 import '../../config/utils/constant.dart';
-import '../../config/utils/helpers.dart';
+import '../../config/utils/custom_dialog.dart';
 import '../../config/utils/localfiles.dart';
 import '../custom_drawer_list_title.dart';
 import '../custom_textfield.dart';
-
-// AppBar customAppbar(String appBarText) {
-//   return AppBar(
-//     backgroundColor: AppStyle.kTransparent,
-//     centerTitle: true,
-//     elevation: noElevation,
-//     iconTheme: IconThemeData(color: AppStyle.defaultIconColor),
-//     title: Text(
-//       appBarText,
-//       style: AppStyle.appbarTextStyle,
-//     ),
-//   );
-// }
 
 Widget customSubmitBtn(
   String text, {
@@ -32,12 +19,12 @@ Widget customSubmitBtn(
   return GestureDetector(
     onTap: onTap,
     child: Container(
-      height: customAuthBtnHeight,
+      height: kHeight50,
       decoration: BoxDecoration(
         color: AppStyle.kDefaultColor,
-        borderRadius: BorderRadius.circular(defaultSpacing),
+        borderRadius: BorderRadius.circular(kDefaultSpacing),
         border:
-            Border.all(width: customBorderWidth, color: AppStyle.kTransparent),
+            Border.all(width: kBorderValue1_5, color: AppStyle.kTransparent),
       ),
       child: Center(
         child: Text(text, style: AppStyle.btnTextStyle(textColor)),
@@ -58,14 +45,39 @@ class HeaderWidget extends StatelessWidget {
       children: [
         Image.asset(
           Localfiles.logo,
-          height: LogoHeight,
-          width: LogoWidth,
+          height: kHeight200,
+          width: kWidth200,
         ),
-        SizedBox(height: doubleSpacing),
+        SizedBox(height: kDefaultSpacing),
         buildAuthMessage(text),
       ],
     );
   }
+}
+
+Widget customDialogConfirmationBtn(
+  String text,
+  bool isInverted, {
+  VoidCallback? onTap, // Paramètre onTap optionnel
+}) {
+  final textColor = isInverted ? AppStyle.kWhite : AppStyle.kDefaultColor;
+  final bgColor = isInverted ? AppStyle.kDefaultColor : AppStyle.kTransparent;
+
+  return GestureDetector(
+    onTap: onTap, // Attachez onTap au GestureDetector
+    child: Container(
+      width: kWidth45,
+      height: kHeight45,
+      decoration: BoxDecoration(
+        color: bgColor,
+        borderRadius: BorderRadius.circular(kDefaultSpacing),
+        border: Border.all(width: kBorderValue1_5, color: AppStyle.kBlack),
+      ),
+      child: Center(
+        child: Text(text, style: AppStyle.btnTextStyle(textColor)),
+      ),
+    ),
+  );
 }
 
 Widget buildAuthMessage(String text) {
@@ -73,12 +85,12 @@ Widget buildAuthMessage(String text) {
     children: [
       const BuildAroundDividerText(),
       Padding(
-        padding: const EdgeInsets.symmetric(horizontal: defaultSpacing),
+        padding: const EdgeInsets.symmetric(horizontal: kDefaultSpacing),
         child: Text(
           text,
           style: TextStyle(
             color: AppStyle.kGreyColor,
-            fontSize: fontsize_20,
+            fontSize: kFontsize20,
           ),
         ),
       ),
@@ -96,7 +108,7 @@ class BuildAroundDividerText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: Divider(
-        thickness: thicknessValue_05,
+        thickness: kBorderValue0_5,
         color: AppStyle.kGreyColor,
       ),
     );
@@ -105,9 +117,10 @@ class BuildAroundDividerText extends StatelessWidget {
 
 Padding mainViewDivider() {
   return Padding(
-    padding: const EdgeInsets.only(left: defaultSpacing, right: defaultSpacing),
+    padding:
+        const EdgeInsets.only(left: kDefaultSpacing, right: kDefaultSpacing),
     child: Divider(
-      thickness: thicknessValue_15,
+      thickness: kBorderValue1_5,
       color: AppStyle.kgreyToWhite,
     ),
   );
@@ -118,20 +131,20 @@ class LoginFormWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        SizedBox(height: defaultSpacing),
+        SizedBox(height: kDefaultSpacing),
         CustomTextField(
           icon: Icons.email_outlined,
           hintText: AppLocalizations.of(context)!.email_field,
         ),
-        SizedBox(height: defaultSpacing),
+        SizedBox(height: kDefaultSpacing),
         CustomTextField(
           icon: Icons.lock_outline,
           hintText: AppLocalizations.of(context)!.pwd_field,
           isPassword: true,
         ),
-        SizedBox(height: doubleSpacing),
+        SizedBox(height: kDefaultSpacing),
         buildForgetPasswordRow(context),
-        SizedBox(height: doubleSpacing),
+        SizedBox(height: kDefaultSpacing),
         customSubmitBtn(
           AppLocalizations.of(context)!.login_message,
           onTap: () {
@@ -161,7 +174,7 @@ class ForgetPwdFormWidget extends StatelessWidget {
           icon: Icons.email_outlined,
           hintText: AppLocalizations.of(context)!.email_field,
         ),
-        SizedBox(height: defaultSpacing),
+        SizedBox(height: kDefaultSpacing),
         customSubmitBtn(
           AppLocalizations.of(context)!.sui_msg,
           onTap: () {
@@ -183,13 +196,13 @@ class ResetFormWidget extends StatelessWidget {
           hintText: AppLocalizations.of(context)!.pwd_field,
           isPassword: true,
         ),
-        SizedBox(height: defaultSpacing),
+        SizedBox(height: kDefaultSpacing),
         CustomTextField(
           icon: Icons.lock_outline,
           hintText: 'confirm password',
           isPassword: true,
         ),
-        const SizedBox(height: doubleSpacing),
+        const SizedBox(height: kDefaultSpacing),
         customSubmitBtn(
           AppLocalizations.of(context)!.sui_msg,
           onTap: () {
@@ -217,7 +230,7 @@ class FooterWidget extends StatelessWidget {
           text1,
           style: TextStyle(color: AppStyle.kGreyColor),
         ),
-        const SizedBox(width: defaultSpacing_5),
+        const SizedBox(width: kSmallerSpacing),
         GestureDetector(
           onTap: ontap,
           child: Text(
@@ -261,44 +274,44 @@ class RegisterFormWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        SizedBox(height: defaultSpacing),
+        SizedBox(height: kDefaultSpacing),
         CustomTextField(
           icon: Icons.email_outlined,
           hintText: AppLocalizations.of(context)!.email_field,
         ),
-        SizedBox(height: defaultSpacing),
+        SizedBox(height: kDefaultSpacing),
         CustomTextField(
           icon: Icons.person_outline_sharp,
           hintText: AppLocalizations.of(context)!.first_name_field,
         ),
-        SizedBox(height: defaultSpacing),
+        SizedBox(height: kDefaultSpacing),
         CustomTextField(
           icon: Icons.email_outlined,
           hintText: AppLocalizations.of(context)!.last_name_field,
         ),
-        SizedBox(height: defaultSpacing),
+        SizedBox(height: kDefaultSpacing),
         CustomTextField(
           icon: Icons.phone_in_talk_outlined,
           hintText: AppLocalizations.of(context)!.phone_number_field,
         ),
-        SizedBox(height: defaultSpacing),
+        SizedBox(height: kDefaultSpacing),
         CustomTextField(
           icon: Icons.location_on_outlined,
           hintText: AppLocalizations.of(context)!.adr_field,
         ),
-        SizedBox(height: defaultSpacing),
+        SizedBox(height: kDefaultSpacing),
         CustomTextField(
           icon: Icons.lock_outline,
           hintText: AppLocalizations.of(context)!.pwd_field,
           isPassword: true,
         ),
-        SizedBox(height: defaultSpacing),
+        SizedBox(height: kDefaultSpacing),
         CustomTextField(
           icon: Icons.lock_outline,
           hintText: AppLocalizations.of(context)!.cpwd_name_field,
           isPassword: true,
         ),
-        SizedBox(height: doubleSpacing),
+        SizedBox(height: kDefaultSpacing),
         customSubmitBtn(
           AppLocalizations.of(context)!.register_now,
           onTap: () {
@@ -326,7 +339,7 @@ class TextAreaWithLabel extends StatelessWidget {
         ? MainAxisAlignment.center
         : MainAxisAlignment.start;
     return Container(
-      margin: EdgeInsets.symmetric(vertical: defaultSpacing),
+      margin: EdgeInsets.symmetric(vertical: kDefaultSpacing),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -345,23 +358,22 @@ class TextAreaWithLabel extends StatelessWidget {
                 borderRadius: BorderRadius.circular(10.0),
               ),
               border: OutlineInputBorder(
-                borderRadius: defaultBorderRadius,
-                borderSide: BorderSide(
-                    color: AppStyle.kBlack, width: customBorderWidth),
+                borderRadius: BorderRadius.circular(kDefaultSpacing),
+                borderSide:
+                    BorderSide(color: AppStyle.kBlack, width: kBorderValue1_5),
               ), // Bordure de la zone de texte
               contentPadding:
-                  EdgeInsets.all(defaultSpacing), // Rembourrage interne
+                  EdgeInsets.all(kDefaultSpacing), // Rembourrage interne
             ),
           ),
           SizedBox(
-            height: defaultSpacing_5,
+            height: kSmallerSpacing,
           ),
         ],
       ),
     );
   }
 }
-
 
 class PolicyTextView extends StatelessWidget {
   final String text;
@@ -371,7 +383,7 @@ class PolicyTextView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(doubleSpacing),
+      padding: const EdgeInsets.all(kDefaultSpacing),
       child: SingleChildScrollView(
         child: Expanded(
           child: Text(
@@ -384,7 +396,6 @@ class PolicyTextView extends StatelessWidget {
   }
 }
 
-
 /***** Drawer */
 Drawer customHomeDrawer(BuildContext context) {
   return Drawer(
@@ -393,7 +404,7 @@ Drawer customHomeDrawer(BuildContext context) {
       child: ListView(
         children: [
           SizedBox(
-            height: quintupleSpacing,
+            height: kQuintupleSpacing,
           ),
           Column(
             children: [
@@ -440,7 +451,7 @@ Drawer customHomeDrawer(BuildContext context) {
 
 Padding buildStudentContainer(BuildContext context) {
   return Padding(
-    padding: const EdgeInsets.all(defaultSpacing),
+    padding: const EdgeInsets.all(kDefaultSpacing),
     child: Column(
       children: [
         Container(
@@ -458,7 +469,7 @@ Padding buildStudentContainer(BuildContext context) {
           decoration: BoxDecoration(
             color: AppStyle.kgreyToWhite,
           ),
-          padding: EdgeInsets.all(defaultSpacing),
+          padding: EdgeInsets.all(kDefaultSpacing),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -467,8 +478,8 @@ Padding buildStudentContainer(BuildContext context) {
                 children: [
                   ClipOval(
                     child: Container(
-                      width: img_width_container,
-                      height: img_height_container,
+                      width: kWidth100,
+                      height: kHeight100,
                       decoration: BoxDecoration(
                         image: DecorationImage(
                           image: AssetImage(Localfiles.person),
@@ -481,28 +492,29 @@ Padding buildStudentContainer(BuildContext context) {
                     children: [
                       Text('NYADJOU LUCIE DANIELLE',
                           textAlign: TextAlign.center,
-                          style: AppStyle.studentContainerTextStyle(
-                              AppStyle.kGreyColor, fontsize_15)),
+                          style: AppStyle.customTextStyle(
+                              AppStyle.kGreyColor, kFontsize15)),
                       SizedBox(
-                        height: defaultSpacing,
+                        height: kDefaultSpacing,
                       ),
                       GestureDetector(
                         onTap: () {
                           NavigationServices(context).gotoDisciplineProfile();
                         },
                         child: Container(
-                          width: student_container_btn_size_width,
-                          height: student_container_btn_size_height,
+                          width: kWidth155,
+                          height: kHeight45,
                           decoration: BoxDecoration(
                             color: AppStyle.kRedColor,
-                            borderRadius: BorderRadius.circular(doubleSpacing),
+                            borderRadius:
+                                BorderRadius.circular(kDefaultSpacing),
                           ),
                           child: Center(
                             child: Text(
                               'Consulter',
                               textAlign: TextAlign.center,
-                              style: AppStyle.studentContainerTextStyle(
-                                  AppStyle.kWhite, fontsize_15),
+                              style: AppStyle.customTextStyle(
+                                  AppStyle.kWhite, kFontsize15),
                             ),
                           ),
                         ),
@@ -512,41 +524,41 @@ Padding buildStudentContainer(BuildContext context) {
                 ],
               ),
               SizedBox(
-                height: defaultSpacing,
+                height: kDefaultSpacing,
               ),
               Row(
                 children: [
                   Text(
                     'Pas d’incident enregistré pour cet étudiant',
                     textAlign: TextAlign.center,
-                    style: AppStyle.studentContainerTextStyle(
-                        AppStyle.kGreyColor, fontsize_12),
+                    style: AppStyle.customTextStyle(
+                        AppStyle.kGreyColor, kFontsize12),
                   ),
                 ],
               ),
               SizedBox(
-                height: defaultSpacing,
+                height: kDefaultSpacing,
               ),
               Row(
                 children: [
                   Text(
                     'Emombo Yaounde',
                     textAlign: TextAlign.center,
-                    style: AppStyle.studentContainerTextStyle(
-                        AppStyle.kGreyColor, fontsize_12),
+                    style: AppStyle.customTextStyle(
+                        AppStyle.kGreyColor, kFontsize12),
                   ),
                   SizedBox(
-                    width: defaultSpacing_5,
+                    width: kSmallerSpacing,
                   ),
                   Icon(
                     Icons.location_on_outlined,
-                    size: iconSize,
+                    size: kIconSize,
                     color: AppStyle.kGreyColor,
                   )
                 ],
               ),
               SizedBox(
-                height: defaultSpacing,
+                height: kDefaultSpacing,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
@@ -556,19 +568,19 @@ Padding buildStudentContainer(BuildContext context) {
                       NavigationServices(context).gotoDisciplineProfile();
                     },
                     child: Container(
-                      width: LogoWidth,
-                      height: height_30,
+                      width: kWidth200,
+                      height: kHeight30,
                       decoration: BoxDecoration(
                         color: AppStyle.kDefaultColor,
-                        borderRadius: BorderRadius.circular(defaultSpacing_5),
+                        borderRadius: BorderRadius.circular(kSmallerSpacing),
                       ),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           Text(
                             'Cahier de discipline',
-                            style: AppStyle.studentContainerTextStyle(
-                                AppStyle.kWhite, fontsize_12),
+                            style: AppStyle.customTextStyle(
+                                AppStyle.kWhite, kFontsize12),
                           ),
                           Icon(
                             Icons.arrow_right_outlined,
@@ -593,12 +605,12 @@ AppBar customAppbar(String text, BuildContext context, bool displayAddBtn) {
     title: Text(
       text,
       textAlign: TextAlign.center,
-      style: AppStyle.AppbarTextStyle(AppStyle.kBlack, fontsize_15),
+      style: AppStyle.AppbarTextStyle(AppStyle.kBlack, kFontsize15),
     ),
     centerTitle: true,
     backgroundColor: AppStyle.kWhite,
-    elevation: noElevation,
-    iconTheme: IconThemeData(color: AppStyle.defaultIconColor),
+    elevation: kZeroValue,
+    iconTheme: IconThemeData(color: AppStyle.kBlack),
     actions: [
       displayAddBtn
           ? IconButton(
@@ -618,7 +630,7 @@ AppBar customAppbar(String text, BuildContext context, bool displayAddBtn) {
                 child: Icon(
                   Icons.add,
                   color: AppStyle.kGreyColor,
-                  size: iconsizeAppbar,
+                  size: kIconSizeAppbar,
                 ),
               ))
           : Container(),

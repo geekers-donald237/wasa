@@ -6,25 +6,30 @@ import 'package:wasa/widget/helpers/helpers.dart';
 import '../../config/utils/constant.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-import '../../config/utils/helpers.dart';
+import '../../config/utils/custom_dialog.dart';
 
 class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: () async {
-        showConfirmationExitDialog(
-            context, AppLocalizations.of(context)!.exit_app, () {
-          SystemNavigator.pop();
-        });
+        showConfirmationDialog(
+          context,
+          AppLocalizations.of(context)!.exit_app,
+          onTap: () {
+            () {
+              SystemNavigator.pop();
+            };
+          },
+        );
         return false;
       },
       child: Scaffold(
         body: Container(
-          margin: EdgeInsets.only(top: defaultSpacing),
+          margin: EdgeInsets.only(top: kDoubleSpacing),
           decoration: BoxDecoration(color: AppStyle.kWhite),
           child: Padding(
-            padding: EdgeInsets.all(defaultSpacing),
+            padding: EdgeInsets.all(kDefaultSpacing),
             child: SingleChildScrollView(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -32,9 +37,9 @@ class LoginScreen extends StatelessWidget {
                   HeaderWidget(
                     text: AppLocalizations.of(context)!.login_message,
                   ),
-                  const SizedBox(height: doubleSpacing),
+                  const SizedBox(height: kDefaultSpacing),
                   LoginFormWidget(),
-                  const SizedBox(height: tripleSpacing),
+                  const SizedBox(height: kTripleSpacing),
                   FooterWidget(
                     ontap: () {
                       NavigationServices(context).gotoRegisterscreen();

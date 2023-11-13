@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:wasa/config/utils/helpers.dart';
+import 'package:wasa/config/utils/custom_dialog.dart';
 import 'package:wasa/widget/helpers/helpers.dart';
 
 import '../../../config/routes/routes_names.dart';
@@ -22,9 +20,8 @@ class _SettingScreenState extends State<SettingScreen> {
       appBar: customAppbar('settings', context, false),
       extendBodyBehindAppBar: false,
       body: Padding(
-        padding: EdgeInsets.all(defaultSpacing),
+        padding: EdgeInsets.all(kDefaultSpacing),
         child: ListView(children: <Widget>[
-          // Center(child: BuildDrawerUserProfile(false)),
           Column(
             children: [
               CustomDrawerListile(
@@ -59,11 +56,14 @@ class _SettingScreenState extends State<SettingScreen> {
                 icon: Icons.logout_outlined,
                 title: 'Logout',
                 onTap: () {
-                  showConfirmationDialog(context, 'Delete Your Account',
-                      'Are you sure you want to delete your account permanently?',
-                      () {
-                    Navigator.of(context).pop();
-                  });
+                  showConfirmationDialog(
+                    context,
+                    'Logout ',
+                    subtitle: 'do you want to Logout ?',
+                    onTap: () {
+                      Navigator.of(context).pop();
+                    },
+                  );
                 },
               ),
               CustomDrawerListile(
@@ -71,9 +71,14 @@ class _SettingScreenState extends State<SettingScreen> {
                 title: 'Delete Account',
                 onTap: () {
                   showConfirmationDialog(
-                      context, 'Log Out', 'Do you want to log Out?', () {
-                    Navigator.of(context).pop();
-                  });
+                    context,
+                    'Delete Your Account',
+                    subtitle:
+                        'Are you sure you want to delete your account permanently?',
+                    onTap: () {
+                      Navigator.of(context).pop();
+                    },
+                  );
                 },
               ),
             ],
