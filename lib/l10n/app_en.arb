@@ -1,6 +1,32 @@
 {
-    "language" : "English",
-    "@language" : {
-        "description" : "The current Language"
-    }
+    "login_message" : "connexion ",
+    "forget_pwd_message" : "forget password",
+    "reset_password" : "reset password",
+    "otp_screen" : "OPT Screen",
+    "sui_msg" : "Next",
+    "login_not_member" : "not a member",
+    "register_now" : "register now",
+    "email_field": "email address",
+    "pwd_field" : "password",
+    "remember_me_checkbox": "remember me",
+    "forget_pwd_row": "forget password ?",
+    "register_message" : "register ",
+    "already_member" : "already member?",
+    "login_now": "login now",
+    "first_name_field": "first name",
+    "last_name_field": "last name",
+    "phone_number_field": "phone number",
+    "adr_field": "address ",
+    "cpwd_name_field": "confirm password",
+    "exit_app": "do you want to exit the application?",
+    "cahier_disc" : "reported book" ,
+    "incident_name": "incidents",
+    "absence_name": "absence",
+    "retard_name" : "retard",
+    "jour_incident" : "incident_day",
+    "jour_absence" : "absence day",
+    "jour_retard" : "late day",
+    "period" : "period"
+
+
 }

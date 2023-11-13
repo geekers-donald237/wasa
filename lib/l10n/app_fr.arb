@@ -1,3 +1,31 @@
 {
-    "language" : "Francais"
+    "login_message" : "connexion",
+    "forget_pwd_message" : "mot de passe oublié",
+    "reset_password" : "mot de passe oublié",
+    "otp_screen" : "Entrer code",
+    "sui_msg" : "suivant",
+    "login_not_member" : "pas membre",
+    "register_now" : "inscrivez-vous maintenant",
+    "email_field": "adresse email",
+    "pwd_field" : "mot de passe",
+    "remember_me_checkbox": "souviens-toi de moi",
+    "forget_pwd_row": "mot de passe oublié ?",
+    "register_message" : "s'inscrire ",
+    "already_member" : "déjà membre ?",
+    "login_now": "connectez-vous maintenant",
+    "first_name_field": "prénom",
+    "last_name_field": "nom",
+    "phone_number_field": "numéro de téléphone",
+    "adr_field": "adresse",
+    "cpwd_name_field": "confirmer le mot de passe",
+    "exit_app" : "voulez vous sortir de l'application ? ",
+    "cahier_disc" : "cahier de discipline",
+    "incident_name" : "incident.s",
+    "absence_name" : "absence.s",
+    "retard_name" : "retard.s" ,
+    "jour_incident" : "jour incident",
+    "jour_absence" : "jour absences",
+    "jour_retard" : "jour retard",
+
+    "period" : "periode"
 }
