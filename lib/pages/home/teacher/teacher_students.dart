@@ -25,7 +25,6 @@ class _TeacherStudentsListState extends State<TeacherStudentsList> {
                   .toString(), // Utilisez l'index de la boucle + 1 comme numéro
               text: 'Nyadjou',
               color: AppStyle.kGreen,
-              isSameColor: true,
             ),
           ),
         ),

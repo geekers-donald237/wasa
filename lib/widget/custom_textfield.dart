@@ -5,11 +5,13 @@ class CustomTextField extends StatefulWidget {
   final IconData icon;
   final String hintText;
   final bool isPassword;
+  final int maxLines;
 
   CustomTextField({
     required this.icon,
     required this.hintText,
     this.isPassword = false,
+    this.maxLines = 1
   });
 
   @override

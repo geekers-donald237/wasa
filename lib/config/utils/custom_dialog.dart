@@ -82,3 +82,37 @@ void showAddChildrenModal(BuildContext context) {
     },
   );
 }
+
+void showRemarqModal(BuildContext context) {
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      var height = MediaQuery.of(context).size.height;
+      var width = MediaQuery.of(context).size.width;
+
+      return AlertDialog(
+        title: Text('Ajouter une Remarque',
+            textAlign: TextAlign.center,
+            style: AppStyle.customTextStyle(AppStyle.kGreyColor, kFontsize20)),
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            CustomTextField(
+              icon: Icons.monitor_heart_outlined,
+              hintText: 'Type de L\'incident',
+            ),
+            TextAreaWithLabel(
+              labelText: 'Query ',
+              controller: TextEditingController(),
+              labelPositionIscentered: true,
+            ),
+            const SizedBox(height: kDoubleSpacing),
+            customSubmitBtn(
+              'Ajouter',
+            ),
+          ],
+        ),
+      );
+    },
+  );
+}
