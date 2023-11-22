@@ -5,6 +5,7 @@ import 'package:wasa/pages/auth/opt.dart';
 import 'package:wasa/pages/auth/opt_register.dart';
 import 'package:wasa/pages/auth/register_screen.dart';
 import 'package:wasa/pages/auth/reset_password.dart';
+import 'package:wasa/pages/home/admin/admin_etablishement_details.dart';
 import 'package:wasa/pages/home/parent/student_details/absence.dart';
 import 'package:wasa/pages/home/parent/student_details/incident.dart';
 import 'package:wasa/pages/home/parent/student_details/retard.dart';
@@ -100,7 +101,12 @@ class NavigationServices {
   Future<dynamic> gotoTeacherAllClasses() async {
     return await _pushMaterialPageRoute(const TeacherClass());
   }
+
   Future<dynamic> gotoTeacherAllStudents() async {
     return await _pushMaterialPageRoute(const TeacherStudentsList());
+  }
+
+  Future<dynamic> gotoAdminview() async {
+    return await _pushMaterialPageRoute(const AdminDetailsScreen());
   }
 }

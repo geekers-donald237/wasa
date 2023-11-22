@@ -746,6 +746,239 @@ Padding buildEtablishementContainer(BuildContext context) {
   );
 }
 
+Padding buildAdminContainer(BuildContext context, String title, String value,
+    String buttonText, String imagePath) {
+  return Padding(
+    padding: const EdgeInsets.all(kDefaultSpacing),
+    child: Column(
+      children: [
+        Container(
+          width: double.infinity,
+          height: 5,
+          decoration: BoxDecoration(
+            color: AppStyle.kGreen,
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(50.0),
+              topRight: Radius.circular(50.0),
+            ),
+          ),
+        ),
+        Container(
+          decoration: BoxDecoration(
+            color: AppStyle.kgreyToWhite,
+          ),
+          padding: EdgeInsets.all(kDefaultSpacing),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              // Première colonne
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  SizedBox(
+                    height: kDefaultSpacing,
+                  ),
+                  Text(
+                    title,
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: Color(0xFF6C757D),
+                      fontSize: 14,
+                      fontFamily: 'Work Sans',
+                      fontWeight: FontWeight.w600,
+                      height: 0,
+                    ),
+                  ),
+                  SizedBox(
+                    height: kDefaultSpacing,
+                  ),
+                  Text(
+                    value,
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: Color(0xFF757D85),
+                      fontSize: 20,
+                      fontFamily: 'Work Sans',
+                      fontWeight: FontWeight.w600,
+                      height: 0,
+                    ),
+                  ),
+                  SizedBox(
+                    height: kDefaultSpacing,
+                  ),
+                  Container(
+                    width: kWidth95,
+                    height: kHeight35,
+                    decoration: BoxDecoration(
+                      color: AppStyle.kGreen,
+                      borderRadius: BorderRadius.circular(5),
+                    ),
+                    child: Center(
+                      child: Text(
+                        buttonText,
+                        textAlign: TextAlign.center,
+                        style: AppStyle.customTextStyle(
+                            AppStyle.kWhite, kFontsize12),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+
+              // Image à la fin
+              Container(
+                width: 150,
+                height: 150,
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage(imagePath),
+                    fit: BoxFit.cover,
+                  ),
+                  borderRadius: BorderRadius.circular(10),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ],
+    ),
+  );
+}
+
+Padding buildAdminEtablishementContainer(BuildContext context) {
+  return Padding(
+    padding: const EdgeInsets.all(kDefaultSpacing),
+    child: Column(
+      children: [
+        Container(
+          width: double.infinity,
+          height: 5,
+          decoration: BoxDecoration(
+            color: AppStyle.kDefaultColor,
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(50.0),
+              topRight: Radius.circular(50.0),
+            ),
+          ),
+        ),
+        Container(
+          decoration: BoxDecoration(
+            color: AppStyle.kgreyToWhite,
+          ),
+          padding: EdgeInsets.all(kDefaultSpacing),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Row(
+                  crossAxisAlignment: CrossAxisAlignment.baseline,
+                  textBaseline: TextBaseline.alphabetic,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      'greenfelder group: ',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: Color(0xFF757D85),
+                        fontSize: 16,
+                        fontFamily: 'Work Sans',
+                        fontWeight: FontWeight.w600,
+                        height: 0,
+                      ),
+                    ),
+                    Row(
+                      children: [
+                        IconButton(
+                          onPressed: () {},
+                          icon: Icon(
+                            Icons.edit,
+                            color: Colors.blue, // Couleur de l'icône d'édition
+                          ),
+                        ),
+                        IconButton(
+                          onPressed: () {},
+                          icon: Icon(
+                            Icons.cancel_outlined,
+                            color:
+                                Colors.red, // Couleur de l'icône de suppression
+                          ),
+                        ),
+                      ],
+                    )
+                  ]),
+              SizedBox(height: kDoubleSpacing),
+              LabeledRow(
+                roundedButton: RoundedButton(
+                  buttonColor: AppStyle.kDefaultColor,
+                  buttonText: 'Category',
+                ),
+                labelText: 'secondary',
+              ),
+              SizedBox(height: kDoubleSpacing),
+              LabeledRow(
+                roundedButton: RoundedButton(
+                  buttonColor: AppStyle.kRedColor,
+                  buttonText: 'Adresse',
+                ),
+                labelText: '186 reidville, CA 38749',
+              ),
+              SizedBox(height: kDoubleSpacing),
+              LabeledRow(
+                roundedButton: RoundedButton(
+                  buttonColor: AppStyle.kGreen,
+                  buttonText: 'E-mail',
+                ),
+                labelText: 'danymckenny@gmail.com',
+              ),
+              SizedBox(height: kDoubleSpacing),
+              LabeledRow(
+                roundedButton: RoundedButton(
+                  buttonColor: AppStyle.kDefaultColor,
+                  buttonText: 'Postal code',
+                ),
+                labelText: '00951',
+              ),
+              SizedBox(height: kDoubleSpacing),
+              LabeledRow(
+                roundedButton: RoundedButton(
+                  buttonColor: AppStyle.kRedColor,
+                  buttonText: 'Phone',
+                ),
+                labelText: '+237 693 350 501',
+              ),
+              SizedBox(height: kDoubleSpacing),
+              LabeledRow(
+                roundedButton: RoundedButton(
+                  buttonColor: AppStyle.kGreen,
+                  buttonText: 'Type',
+                ),
+                labelText: 'private',
+              ),
+              SizedBox(height: kDoubleSpacing),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Expanded(
+                    child: RoundedButton(
+                      onTap: () {
+                        NavigationServices(context).gotoAdminview();
+                      },
+                      buttonColor: AppStyle.kRedColor,
+                      buttonText: 'See More',
+                    ),
+                  ),
+                ],
+              )
+            ],
+          ),
+        ),
+      ],
+    ),
+  );
+}
+
 class InfoRow extends StatelessWidget {
   final String label;
   final Widget value;
