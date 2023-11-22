@@ -4,8 +4,10 @@ import '../utils/constant.dart';
 class AppStyle {
   // Couleurs
   static const Color kDefaultColor = Color(0xFF5271FF);
+  
   static const Color kSecondaryColor = Color(0xFF97A6BF);
   static const Color kWhite = Colors.white;
+  static const Color kGreen = Color(0xFF54CA69);
 
   static const Color kTransparent = Colors.transparent;
   static const Color kBlack = Color(0xFF262626);

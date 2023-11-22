@@ -11,8 +11,11 @@ import 'package:wasa/pages/home/parent/student_details/retard.dart';
 import 'package:wasa/pages/home/profile/edit_profil.dart';
 import 'package:wasa/pages/home/profile/help_center.dart';
 import 'package:wasa/pages/home/profile/terms_and_condition.dart';
+import 'package:wasa/pages/home/teacher/teacher_class.dart';
+import 'package:wasa/pages/home/teacher/teacher_main_screen.dart';
 
 import '../../pages/home/parent/disciplinary_info.dart';
+import '../../pages/home/teacher/teacher_students.dart';
 import '../../widget/bottom_bar/nav_bar.dart';
 
 class NavigationServices {
@@ -82,15 +85,22 @@ class NavigationServices {
     return await _pushMaterialPageRoute(const EditProfilScreen());
   }
 
-  
   Future<dynamic> gotoHelpCenter() async {
     return await _pushMaterialPageRoute(const HelpCenterScreen());
   }
 
-   
   Future<dynamic> gotoTermsAndConditions() async {
     return await _pushMaterialPageRoute(const TermsAndConditionScreen());
   }
 
-  
+  Future<dynamic> gotoTeacherMainview() async {
+    return await _pushMaterialPageRoute(const TeacherMainViewScreen());
+  }
+
+  Future<dynamic> gotoTeacherAllClasses() async {
+    return await _pushMaterialPageRoute(const TeacherClass());
+  }
+  Future<dynamic> gotoTeacherAllStudents() async {
+    return await _pushMaterialPageRoute(const TeacherStudentsList());
+  }
 }

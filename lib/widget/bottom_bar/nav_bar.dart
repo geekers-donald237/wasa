@@ -3,6 +3,7 @@ import 'package:wasa/widget/helpers/helpers.dart';
 
 import '../../pages/home/parent/parent_screen.dart';
 import '../../pages/home/profile/setting.dart';
+import '../../pages/home/teacher/teacher_main_screen.dart';
 
 class NavigationBottomBar extends StatefulWidget {
   const NavigationBottomBar({super.key});
@@ -16,7 +17,6 @@ class _NavigationBottomBarState extends State<NavigationBottomBar> {
 
   @override
   Widget build(BuildContext context) {
-    
     return Scaffold(
       bottomNavigationBar: NavigationBar(
         onDestinationSelected: (int index) {
@@ -49,7 +49,7 @@ class _NavigationBottomBarState extends State<NavigationBottomBar> {
       ),
       body: <Widget>[
         ParentHomeView(),
-        Text('dd'),
+        TeacherMainViewScreen(),
         Text('dddd'),
         SettingScreen(),
       ][currentPageIndex],

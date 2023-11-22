@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:wasa/config/routes/routes_names.dart';
+import 'package:wasa/widget/rounded_btn.dart';
 
 import '../../config/theme/theme.dart';
 import '../../config/utils/constant.dart';
@@ -600,6 +601,286 @@ Padding buildStudentContainer(BuildContext context) {
   );
 }
 
+class LabeledRow extends StatelessWidget {
+  final RoundedButton roundedButton;
+  final String labelText;
+  final bool isPermuted;
+
+  const LabeledRow({
+    required this.roundedButton,
+    required this.labelText,
+    this.isPermuted = false,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.baseline,
+      textBaseline: TextBaseline.alphabetic,
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: isPermuted
+          ? [
+              Text(
+                '$labelText: ',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: Color(0xFF757D85),
+                  fontSize: 16,
+                  fontFamily: 'Work Sans',
+                  fontWeight: FontWeight.w600,
+                  height: 0,
+                ),
+              ),
+              roundedButton,
+            ]
+          : [
+              roundedButton,
+              SizedBox(height: kDoubleSpacing),
+              Text(
+                ': $labelText  ',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: Color(0xFF757D85),
+                  fontSize: 16,
+                  fontFamily: 'Work Sans',
+                  fontWeight: FontWeight.w600,
+                  height: 0,
+                ),
+              ),
+            ],
+    );
+  }
+}
+
+Padding buildEtablishementContainer(BuildContext context) {
+  return Padding(
+    padding: const EdgeInsets.all(kDefaultSpacing),
+    child: Column(
+      children: [
+        Container(
+          width: double.infinity,
+          height: 5,
+          decoration: BoxDecoration(
+            color: AppStyle.kDefaultColor,
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(50.0),
+              topRight: Radius.circular(50.0),
+            ),
+          ),
+        ),
+        Container(
+          decoration: BoxDecoration(
+            color: AppStyle.kgreyToWhite,
+          ),
+          padding: EdgeInsets.all(kDefaultSpacing),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              GestureDetector(
+                onTap: () {
+                  NavigationServices(context).gotoTeacherAllClasses();
+                },
+                child: LabeledRow(
+                  roundedButton: RoundedButton(
+                    buttonColor: AppStyle.kGreen,
+                    buttonText: 'View',
+                  ),
+                  labelText: 'greenfelder group',
+                  isPermuted: true,
+                ),
+              ),
+              SizedBox(height: kDoubleSpacing),
+              LabeledRow(
+                roundedButton: RoundedButton(
+                  buttonColor: AppStyle.kDefaultColor,
+                  buttonText: 'Category',
+                ),
+                labelText: 'secondary',
+              ),
+              SizedBox(height: kDoubleSpacing),
+              LabeledRow(
+                roundedButton: RoundedButton(
+                  buttonColor: AppStyle.kRedColor,
+                  buttonText: 'Adresse',
+                ),
+                labelText: '186 reidville, CA 38749',
+              ),
+              SizedBox(height: kDoubleSpacing),
+              LabeledRow(
+                roundedButton: RoundedButton(
+                  buttonColor: AppStyle.kGreen,
+                  buttonText: 'E-mail',
+                ),
+                labelText: 'danymckenny@gmail.com',
+              ),
+              SizedBox(height: kDoubleSpacing),
+              LabeledRow(
+                roundedButton: RoundedButton(
+                  buttonColor: AppStyle.kDefaultColor,
+                  buttonText: 'Postal code',
+                ),
+                labelText: '00951',
+              ),
+              SizedBox(height: kDoubleSpacing),
+              LabeledRow(
+                roundedButton: RoundedButton(
+                  buttonColor: AppStyle.kRedColor,
+                  buttonText: 'Phone',
+                ),
+                labelText: '+237 693 350 501',
+              ),
+              SizedBox(height: kDoubleSpacing),
+              LabeledRow(
+                roundedButton: RoundedButton(
+                  buttonColor: AppStyle.kGreen,
+                  buttonText: 'Type',
+                ),
+                labelText: 'private',
+              ),
+            ],
+          ),
+        ),
+      ],
+    ),
+  );
+}
+
+class InfoRow extends StatelessWidget {
+  final String label;
+  final Widget value;
+
+  InfoRow({required this.label, required this.value});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        TextAndWidgetRow(
+          firstText: label,
+          secondWidget: value,
+        ),
+        Divider(),
+        SizedBox(
+          height: kSmallSpacing,
+        ),
+      ],
+    );
+  }
+}
+
+class YourContainer extends StatelessWidget {
+  final String numero;
+  final String classe;
+  final String date;
+
+  YourContainer(
+      {required this.numero, required this.classe, required this.date});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(kDefaultSpacing),
+      child: Column(
+        children: [
+          Container(
+            width: double.infinity,
+            height: 5,
+            decoration: BoxDecoration(
+              color: AppStyle.kDefaultColor,
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(50.0),
+                topRight: Radius.circular(50.0),
+              ),
+            ),
+          ),
+          Container(
+            decoration: BoxDecoration(
+              color: AppStyle.kgreyToWhite,
+            ),
+            padding: EdgeInsets.all(kDefaultSpacing),
+            child: Column(
+              children: [
+                InfoRow(
+                  label: 'Numero',
+                  value: Text(numero),
+                ),
+                InfoRow(
+                  label: 'Nom',
+                  value: Text(classe),
+                ),
+                InfoRow(
+                  label: 'Date de creation',
+                  value: Text(
+                    date,
+                    textAlign: TextAlign.right,
+                    style: TextStyle(
+                      color: Color(0xFF3BA859),
+                      fontSize: 14,
+                      fontFamily: 'Work Sans',
+                      fontWeight: FontWeight.w500,
+                      height: 0,
+                    ),
+                  ),
+                ),
+                InfoRow(
+                  label: 'Options',
+                  value: RoundedButton(
+                    onTap: () {
+                      NavigationServices(context).gotoTeacherAllStudents();
+                    },
+                    buttonColor: AppStyle.kRedColor,
+                    buttonText: 'View',
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Container(
+            width: double.infinity,
+            height: 5,
+            decoration: BoxDecoration(
+              color: AppStyle.kDefaultColor,
+              borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(50.0),
+                bottomRight: Radius.circular(50.0),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class TextAndWidgetRow extends StatelessWidget {
+  final String firstText;
+  final Widget secondWidget;
+
+  TextAndWidgetRow({required this.firstText, required this.secondWidget});
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Text(
+          firstText,
+          style: TextStyle(
+            color: Color(0xFF1C1F34),
+            fontSize: 15,
+            fontFamily: 'Work Sans',
+            fontWeight: FontWeight.w500,
+            height: 0,
+          ),
+        ),
+        secondWidget,
+      ],
+    );
+  }
+}
+
 AppBar customAppbar(String text, BuildContext context, bool displayAddBtn) {
   return AppBar(
     title: Text(
@@ -634,6 +915,31 @@ AppBar customAppbar(String text, BuildContext context, bool displayAddBtn) {
                 ),
               ))
           : Container(),
+    ],
+  );
+}
+
+AppBar customTeacherAppbar(String text, BuildContext context) {
+  return AppBar(
+    title: Text(
+      text,
+      textAlign: TextAlign.center,
+      style: AppStyle.AppbarTextStyle(AppStyle.kBlack, kFontsize15),
+    ),
+    centerTitle: true,
+    backgroundColor: AppStyle.kWhite,
+    elevation: kZeroValue,
+    iconTheme: IconThemeData(color: AppStyle.kBlack),
+    actions: [
+      IconButton(
+          onPressed: () => {
+                showAddChildrenModal(context),
+              },
+          icon: Icon(
+            Icons.more_vert_outlined,
+            color: AppStyle.kBlack,
+            size: kIconSize,
+          ))
     ],
   );
 }

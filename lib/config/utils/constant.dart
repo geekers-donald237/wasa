@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 const double kWidth35 = 35;
 const double kWidth45 = 45;
 const double kWidth75 = 75;
+const double kWidth80 = 80;
 const double kWidth85 = 85;
 const double kWidth95 = 95;
 const double kWidth105 = 105;
@@ -16,6 +17,7 @@ const double kWidth250 = 250;
 
 const double kHeight45 = 45;
 const double kHeight30 = 30;
+const double kHeight35 = 35;
 const double kHeight50 = 50;
 const double kHeight75 = 75;
 const double kHeight85 = 85;

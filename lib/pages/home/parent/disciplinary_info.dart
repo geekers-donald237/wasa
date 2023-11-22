@@ -34,8 +34,10 @@ class DisciplinaryInfo extends StatelessWidget {
                 NavigationServices(context).gotoAbsencesDetails();
               },
               child: NumberTextWidget(
-                  number: '3',
-                  text: AppLocalizations.of(context)!.absence_name),
+                number: '3',
+                text: AppLocalizations.of(context)!.absence_name,
+                color: Color(0xFFFF5757),
+              ),
             ),
             GestureDetector(
               onTap: () {
@@ -43,6 +45,7 @@ class DisciplinaryInfo extends StatelessWidget {
               },
               child: NumberTextWidget(
                   number: '0',
+                  color: Color(0xFFFF5757),
                   text: AppLocalizations.of(context)!.incident_name),
             ),
             GestureDetector(
@@ -50,7 +53,9 @@ class DisciplinaryInfo extends StatelessWidget {
                 NavigationServices(context).gotoRetardDetails();
               },
               child: NumberTextWidget(
-                  number: '5', text: AppLocalizations.of(context)!.retard_name),
+                  color: Color(0xFFFF5757),
+                  number: '5',
+                  text: AppLocalizations.of(context)!.retard_name),
             ),
           ],
         ),
