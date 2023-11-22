@@ -67,7 +67,7 @@ Widget customDialogConfirmationBtn(
   return GestureDetector(
     onTap: onTap, // Attachez onTap au GestureDetector
     child: Container(
-      width: kWidth45,
+      width: kWidth35,
       height: kHeight45,
       decoration: BoxDecoration(
         color: bgColor,
@@ -409,33 +409,33 @@ Drawer customHomeDrawer(BuildContext context) {
           ),
           Column(
             children: [
-              CustomDrawerListile(
+              CustomProfileListile(
                 icon: Icons.book,
                 title: 'View Contract',
                 onTap: () {},
               ),
-              CustomDrawerListile(
+              CustomProfileListile(
                 icon: Icons.help_center,
                 title: 'Help Center',
                 onTap: () {
                   // NavigationServices(context).gotoHelpCenterScreen();
                 },
               ),
-              CustomDrawerListile(
+              CustomProfileListile(
                 icon: Icons.policy_outlined,
                 title: 'Terms and Conditions',
                 onTap: () {
                   // NavigationServices(context).gotoTermsAndConditionScreen();
                 },
               ),
-              CustomDrawerListile(
+              CustomProfileListile(
                 icon: Icons.bug_report,
                 title: 'Bug Report',
                 onTap: () {
                   // NavigationServices(context).gotoPrivacyPolicyScreen();
                 },
               ),
-              CustomDrawerListile(
+              CustomProfileListile(
                 icon: Icons.person_outlined,
                 title: 'Profile',
                 onTap: () {

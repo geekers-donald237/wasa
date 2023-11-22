@@ -3,7 +3,7 @@ import 'package:wasa/widget/helpers/helpers.dart';
 
 import '../../pages/home/admin/admin_main_view.dart';
 import '../../pages/home/parent/parent_screen.dart';
-import '../../pages/home/profile/setting.dart';
+import '../../pages/home/profile/settings.dart';
 import '../../pages/home/teacher/teacher_main_screen.dart';
 
 class NavigationBottomBar extends StatefulWidget {
